@@ -10,13 +10,38 @@ install(FILES
   prg-ram.ld
   c-in-prg-ram.ld
 TYPE LIB)
-install(FILES mapper.h TYPE INCLUDE)
+install(FILES
+  bios.inc
+  DESTINATION ${ASMINCDIR})
+install(FILES
+  bios.h
+  mapper.h
+TYPE INCLUDE)
 
 add_platform_object_file(fds-crt0-o crt0.o)
 add_platform_object_file(fds-reset-o reset.o reset.s)
 
-add_platform_library(fds-c mapper.c)
-target_include_directories(fds-c PRIVATE ../nes)
-target_link_libraries(fds-c PRIVATE common-asminc)
+add_platform_library(fds-c
+  bios.s
 
-#add_subdirectory(fdslib)
+  fds_Delay131.c
+  fds_Delayms.s
+  fds_DisObj.c
+  fds_DisPF.c
+  fds_DisPFObj.c
+  fds_EnObj.c
+  fds_EnPF.c
+  fds_EnPFObj.c
+  fds_GetNumFiles.c
+  # fds_Nam2PixelConv.c
+  fds_Pixel2NamConv.c
+  fds_SetNumFiles.c
+  fds_SkipFiles.c
+  fds_VINTWait.c
+
+  mapper.c
+  mapper.s
+)
+#target_include_directories(fds-c PRIVATE ../nes)
+target_include_directories(fds-c BEFORE PUBLIC .)
+target_link_libraries(fds-c PRIVATE common-asminc)
