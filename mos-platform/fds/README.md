@@ -1,0 +1,56 @@
+# FDS target progress
+
+- [-] Mapper functions
+  - [-] Audio
+  - [ ] Disk I/O
+  - [x] External connector
+  - [ ] IRQs
+- [-] BIOS functions
+  - [ ] LoadFiles (direct pointer)
+  - [ ] AppendFile (direct pointer)
+  - [ ] WriteFile (direct pointer)
+  - [ ] CheckFileCount (direct pointer)
+  - [ ] AdjustFileCount (direct pointer)
+  - [ ] SetFileCount1 (direct pointer)
+  - [ ] SetFileCount (direct pointer)
+  - [ ] GetDiskInfo (direct pointer)
+  - [ ] CheckDiskHeader
+  - [x] GetNumFiles
+  - [x] SetNumFiles
+  - [ ] FileMatchTest
+  - [x] SkipFiles
+  - [x] Delay131
+  - [x] Delayms
+  - [x] DisPFObj
+  - [x] EnPFObj
+  - [x] DisObj
+  - [x] EnObj
+  - [x] DisPF
+  - [x] EnPF
+  - [x] VINTWait
+  - [ ] VRAMStructWrite (direct pointer)
+  - [ ] FetchDirectPtr
+  - [ ] WriteVRAMBuffer
+  - [ ] ReadVRAMBuffer
+  - [ ] PrepareVRAMString (direct pointer)
+  - [ ] PrepareVRAMStrings (direct pointer)
+  - [ ] GetVRAMBufferByte
+  - [x] Pixel2NamConv
+  - [ ] Nam2PixelConv
+  - [ ] Random
+  - [x] SpriteDMA
+  - [ ] CounterLogic
+  - [ ] ReadPads
+  - [ ] OrPads
+  - [x] ReadDownPads
+  - [x] ReadOrDownPads
+  - [x] ReadDownVerifyPads
+  - [x] ReadOrDownVerifyPads
+  - [x] ReadDownExpPads
+  - [x] VRAMFill
+  - [x] MemFill
+  - [ ] SetScroll
+  - [ ] JumpEngine
+  - [ ] ReadKeyboard
+  - [ ] LoadTileset (direct pointer)
+  - [x] UploadObject
