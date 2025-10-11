@@ -1,7 +1,7 @@
 .text
 
 ;
-; void fds_Delayms (void);
+; void fds_Delayms (char delay);
 ;
 .global fds_Delayms
 fds_Delayms:

@@ -43,12 +43,22 @@ struct fds_object {
   unsigned char oam_idx;
 };
 
+struct fds_trans_pads {
+  unsigned char trans[2];
+  unsigned char data[2];
+};
+
+struct fds_trans_exp_pads {
+  unsigned char trans[4];
+  unsigned char data[4];
+};
+
 unsigned char fds_GetNumFiles (void);
 void fds_SetNumFiles (unsigned char num);
 void fds_SkipFiles (unsigned char num);
 
 void fds_Delay131 (void);
-void fds_Delayms (void) __attribute__((leaf));
+void fds_Delayms (char delay) __attribute__((leaf));
 
 void fds_DisPFObj (void);
 void fds_EnPFObj (void);
@@ -60,6 +70,19 @@ void fds_EnPF (void);
 void fds_VINTWait (void);
 
 unsigned fds_Pixel2NamConv (unsigned char y, unsigned char x);
+
+void fds_SpriteDMA (void);
+
+struct fds_trans_pads *fds_ReadDownPads(void);
+struct fds_trans_pads *fds_ReadOrDownPads(void);
+struct fds_trans_pads *fds_ReadDownVerifyPads(void);
+struct fds_trans_pads *fds_ReadOrDownVerifyPads(void);
+struct fds_trans_exp_pads *fds_ReadDownExpPads(void);
+
+void fds_VRAMFill (char tile_row, char value, char rows_attr) __attribute__((leaf));
+void fds_MemFill (char value, char start, char end) __attribute__((leaf));
+
+void fds_UploadObject (struct fds_object *obj) __attribute__((leaf));
 
 #ifdef __cplusplus
 }

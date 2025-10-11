@@ -33,11 +33,20 @@ add_platform_library(fds-c
   fds_EnPF.c
   fds_EnPFObj.c
   fds_GetNumFiles.c
+  fds_MemFill.s
   # fds_Nam2PixelConv.c
   fds_Pixel2NamConv.c
+  fds_ReadDownExpPads.c
+  fds_ReadDownPads.c
+  fds_ReadDownVerifyPads.c
+  fds_ReadOrDownPads.c
+  fds_ReadOrDownVerifyPads.c
   fds_SetNumFiles.c
   fds_SkipFiles.c
+  fds_SpriteDMA.c
+  fds_UploadObject.s
   fds_VINTWait.c
+  fds_VRAMFill.s
 
   mapper.c
   mapper.s
