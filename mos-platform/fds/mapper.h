@@ -1,9 +1,20 @@
 #ifndef _MAPPER_H_
 #define _MAPPER_H_
 
+#include <stdbool.h>
+
 #ifdef __cplusplus
 extern "C" {
 #endif
+
+// Enables/disables disk I/O registers.
+__attribute__((leaf)) void set_disk_io(bool value);
+
+// Enables/disables sound I/O registers.
+__attribute__((leaf)) void set_sound_io(bool value);
+
+// Set the next byte to write to disk.
+__attribute__((leaf)) void write_disk_data(char value);
 
 // Set all 8 bits of the $4025 FDS Control register.
 __attribute__((leaf)) void set_fds_ctrl(char value);
@@ -19,6 +30,36 @@ struct __fds_read {
 };
 
 #define FDS_READ (*(volatile struct __fds_read*)0x4030)
+
+struct __fds_apu {
+  unsigned char wavetable[64];
+  struct {
+    unsigned char vol_env;
+    unsigned char unused;
+    unsigned char freq_lo;
+    unsigned char freq_hi;
+  } wave;
+  struct {
+    unsigned char env;
+    unsigned char counter;
+    unsigned char freq_lo;
+    unsigned char freq_hi;
+    unsigned char mod_table;
+  } mod;
+  unsigned char write_vol;
+  unsigned char env_speed;
+  unsigned char unused[5];
+  unsigned char vol_gain;
+  unsigned char wave_acm;
+  unsigned char mod_gain;
+  unsigned char mod_acm;
+  unsigned char mod_ctr_gain;
+  unsigned char mod_ctr_inc;
+  unsigned char wave_value;
+  unsigned char mod_ctr_val;
+};
+
+#define FDS_APU (*(volatile struct __apu*)0x4040)
 
 #define MIRROR_VERTICAL 0
 #define MIRROR_HORIZONTAL 1
