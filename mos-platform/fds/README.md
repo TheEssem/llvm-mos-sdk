@@ -17,10 +17,10 @@
   - [ ] SetFileCount1 (direct pointer)
   - [ ] SetFileCount (direct pointer)
   - [ ] GetDiskInfo (direct pointer)
-  - [ ] CheckDiskHeader
+  - [x] CheckDiskHeader
   - [x] GetNumFiles
   - [x] SetNumFiles
-  - [ ] FileMatchTest
+  - [x] FileMatchTest
   - [x] SkipFiles
   - [x] Delay131
   - [x] Delayms

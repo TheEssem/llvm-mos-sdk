@@ -24,6 +24,7 @@ add_platform_object_file(fds-reset-o reset.o reset.s)
 add_platform_library(fds-c
   bios.s
 
+  fds_CheckDiskHeader.c
   fds_Delay131.c
   fds_Delayms.s
   fds_DisObj.c
@@ -32,6 +33,7 @@ add_platform_library(fds-c
   fds_EnObj.c
   fds_EnPF.c
   fds_EnPFObj.c
+  fds_FileMatchTest.c
   fds_GetNumFiles.c
   fds_MemFill.s
   # fds_Nam2PixelConv.c
