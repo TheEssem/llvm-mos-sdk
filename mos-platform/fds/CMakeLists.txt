@@ -44,7 +44,7 @@ add_platform_library(fds-c
   fds_SetNumFiles.c
   fds_SkipFiles.c
   fds_SpriteDMA.c
-  fds_UploadObject.s
+  fds_UploadObject.c
   fds_VINTWait.c
   fds_VRAMFill.s
 

@@ -82,7 +82,7 @@ struct fds_trans_exp_pads *fds_ReadDownExpPads(void);
 void fds_VRAMFill (char tile_row, char value, char rows_attr) __attribute__((leaf));
 void fds_MemFill (char value, char start, char end) __attribute__((leaf));
 
-void fds_UploadObject (struct fds_object *obj) __attribute__((leaf));
+void fds_UploadObject (struct fds_object *obj);
 
 #ifdef __cplusplus
 }

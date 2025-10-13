@@ -1,5 +1,5 @@
-#include "mapper.h"
 #include <peekpoke.h>
+#include <stdbool.h>
 
 #define FDS_IO 0x4023
 
