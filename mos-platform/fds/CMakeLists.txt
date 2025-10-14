@@ -22,7 +22,7 @@ add_platform_object_file(fds-crt0-o crt0.o)
 add_platform_object_file(fds-reset-o reset.o reset.s)
 
 add_platform_library(fds-c
-  bios.s
+  bios.S
 
   fds_CheckDiskHeader.c
   fds_Delay131.c
