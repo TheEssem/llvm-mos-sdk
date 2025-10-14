@@ -53,7 +53,7 @@ struct fds_trans_exp_pads {
   unsigned char data[4];
 };
 
-char fds_CheckDiskHeader (char *string);
+char fds_CheckDiskHeader (char string[10]);
 unsigned char fds_GetNumFiles (void);
 void fds_SetNumFiles (unsigned char num);
 char fds_FileMatchTest (char *ids);
