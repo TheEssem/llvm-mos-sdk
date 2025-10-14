@@ -5,6 +5,27 @@
 extern "C" {
 #endif
 
+struct fds_disk_id {
+  unsigned char licensee;
+  char name[4];
+  char version;
+  char side_num;
+  char disk_num;
+  char disk_type;
+  char _unk;
+  char num_files;
+};
+
+struct fds_file_header {
+  char id;
+  char name[8];
+  char *dest;
+  unsigned int size;
+  char type;
+  char *source;
+  char source_type;
+};
+
 #define FDS_XFR_MODE_COPY 0
 #define FDS_XFR_MODE_FILL 1
 
@@ -52,6 +73,15 @@ struct fds_trans_exp_pads {
   unsigned char trans[4];
   unsigned char data[4];
 };
+
+char fds_LoadFiles (struct fds_disk_id *disk_id, char *file_ids, char *loaded) __attribute__((leaf));
+char fds_AppendFile (struct fds_disk_id *disk_id, struct fds_file_header *file_header) __attribute__((leaf));
+char fds_WriteFile (struct fds_disk_id *disk_id, struct fds_file_header *file_header, char file_num) __attribute__((leaf));
+char fds_CheckFileCount (struct fds_disk_id *disk_id, char count) __attribute__((leaf));
+char fds_AdjustFileCount (struct fds_disk_id *disk_id, char count) __attribute__((leaf));
+char fds_SetFileCount1 (struct fds_disk_id *disk_id, char count) __attribute__((leaf));
+char fds_SetFileCount (struct fds_disk_id *disk_id, char count) __attribute__((leaf));
+char fds_GetDiskInfo (struct fds_disk_id *disk_id) __attribute__((leaf));
 
 char fds_CheckDiskHeader (char string[10]);
 unsigned char fds_GetNumFiles (void);

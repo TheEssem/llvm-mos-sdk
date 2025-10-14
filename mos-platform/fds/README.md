@@ -9,14 +9,14 @@
   - [ ] IRQs
   - [x] Mirroring
 - [ ] BIOS functions
-  - [ ] LoadFiles (direct pointer)
-  - [ ] AppendFile (direct pointer)
-  - [ ] WriteFile (direct pointer)
-  - [ ] CheckFileCount (direct pointer)
-  - [ ] AdjustFileCount (direct pointer)
-  - [ ] SetFileCount1 (direct pointer)
-  - [ ] SetFileCount (direct pointer)
-  - [ ] GetDiskInfo (direct pointer)
+  - [x] LoadFiles
+  - [x] AppendFile
+  - [x] WriteFile
+  - [x] CheckFileCount
+  - [x] AdjustFileCount
+  - [x] SetFileCount1
+  - [x] SetFileCount
+  - [x] GetDiskInfo
   - [x] CheckDiskHeader
   - [x] GetNumFiles
   - [x] SetNumFiles
