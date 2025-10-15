@@ -1,4 +1,4 @@
-#include <bios.inc>
+.include "bios.inc"
 
 .macro weakdef name:req
   .weak \name
