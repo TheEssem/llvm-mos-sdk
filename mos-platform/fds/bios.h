@@ -101,6 +101,8 @@ void fds_EnPF (void);
 
 void fds_VINTWait (void);
 
+void *fds_FetchDirectPtr (void);
+
 unsigned fds_Pixel2NamConv (unsigned char y, unsigned char x);
 
 void fds_SpriteDMA (void);

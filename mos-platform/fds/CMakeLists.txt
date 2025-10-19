@@ -36,6 +36,7 @@ add_platform_library(fds-c
   fds_EnObj.c
   fds_EnPF.c
   fds_EnPFObj.c
+  fds_FetchDirectPtr.c
   fds_FileMatchTest.c
   fds_GetDiskInfo.s
   fds_GetNumFiles.c
