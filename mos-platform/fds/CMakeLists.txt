@@ -6,7 +6,6 @@ endif()
 
 install(FILES
   common.ld
-  fds.ld
   prg-ram.ld
   c-in-prg-ram.ld
 TYPE LIB)
@@ -58,6 +57,8 @@ add_platform_library(fds-c
   fds_VINTWait.c
   fds_VRAMFill.s
   fds_WriteFile.s
+
+  irq.s
 
   mapper.c
   mapper.s
