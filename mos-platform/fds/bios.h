@@ -64,6 +64,16 @@ struct fds_object {
   unsigned char oam_idx;
 };
 
+struct fds_pads {
+  unsigned char pad[2];
+  unsigned char exp[2];
+};
+
+struct fds_pads_combined {
+  unsigned char pad_1;
+  unsigned char pad_2;
+};
+
 struct fds_trans_pads {
   unsigned char trans[2];
   unsigned char data[2];
@@ -72,6 +82,11 @@ struct fds_trans_pads {
 struct fds_trans_exp_pads {
   unsigned char trans[4];
   unsigned char data[4];
+};
+
+struct fds_coords {
+  unsigned char y;
+  unsigned char x;
 };
 
 struct keyboard_data {
@@ -186,10 +201,13 @@ void fds_VINTWait (void);
 
 void *fds_FetchDirectPtr (void);
 
-unsigned fds_Pixel2NamConv (unsigned char y, unsigned char x);
+unsigned fds_Pixel2NamConv (struct fds_coords coords);
+struct fds_coords fds_Nam2PixelConv (unsigned addr);
 
 void fds_SpriteDMA (void);
 
+struct fds_pads fds_ReadPads(void);
+struct fds_pads_combined fds_OrPads(struct fds_pads pads);
 struct fds_trans_pads *fds_ReadDownPads(void);
 struct fds_trans_pads *fds_ReadOrDownPads(void);
 struct fds_trans_pads *fds_ReadDownVerifyPads(void);
@@ -199,7 +217,7 @@ struct fds_trans_exp_pads *fds_ReadDownExpPads(void);
 void fds_VRAMFill (char tile_row, char value, char rows_attr) __attribute__((leaf));
 void fds_MemFill (char value, char start, char end) __attribute__((leaf));
 
-char fds_ReadKeyboard(struct keyboard_data *data);
+char fds_ReadKeyboard(struct keyboard_data *data) __attribute__((leaf));
 
 void fds_UploadObject (struct fds_object *obj);
 

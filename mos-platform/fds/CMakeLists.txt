@@ -42,7 +42,8 @@ add_platform_library(fds-c
   fds_GetNumFiles.c
   fds_LoadFiles.s
   fds_MemFill.s
-  # fds_Nam2PixelConv.c
+  fds_Nam2PixelConv.c
+  fds_OrPads.c
   fds_Pixel2NamConv.c
   fds_ReadDownExpPads.c
   fds_ReadDownPads.c
@@ -50,6 +51,7 @@ add_platform_library(fds-c
   fds_ReadKeyboard.s
   fds_ReadOrDownPads.c
   fds_ReadOrDownVerifyPads.c
+  fds_ReadPads.c
   fds_SetFileCount.s
   fds_SetFileCount1.s
   fds_SetNumFiles.c

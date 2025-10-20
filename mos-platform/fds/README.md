@@ -39,12 +39,12 @@
   - [ ] PrepareVRAMStrings (direct pointer)
   - [ ] GetVRAMBufferByte
   - [x] Pixel2NamConv
-  - [ ] Nam2PixelConv
+  - [x] Nam2PixelConv
   - [ ] Random
   - [x] SpriteDMA
   - [ ] CounterLogic
-  - [ ] ReadPads
-  - [ ] OrPads
+  - [x] ReadPads
+  - [x] OrPads
   - [x] ReadDownPads
   - [x] ReadOrDownPads
   - [x] ReadDownVerifyPads
