@@ -1,5 +1,28 @@
 .text
 
+.section .init.010,"ax",@progbits
+; Write the vectors to the necessary parts of RAM
+  lda #<nmi
+  sta $DFF6
+  lda #>nmi
+  sta $DFF7
+  lda #<nmi_2
+  sta $DFF8
+  lda #>nmi_2
+  sta $DFF9
+  lda #<nmi_3
+  sta $DFFA
+  lda #>nmi_3
+  sta $DFFB
+  lda #<_start
+  sta $DFFC
+  lda #>_start
+  sta $DFFD
+  lda #<irq
+  sta $DFFE
+  lda #>irq
+  sta $DFFF
+
 .section .irq_begin,"axG",@progbits,irq
 .weak irq
 .global __default_irq
