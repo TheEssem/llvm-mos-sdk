@@ -14,6 +14,7 @@ install(FILES
   DESTINATION ${ASMINCDIR})
 install(FILES
   bios.h
+  irq.h
   mapper.h
 TYPE INCLUDE)
 
@@ -58,6 +59,7 @@ add_platform_library(fds-c
   fds_VRAMFill.s
   fds_WriteFile.s
 
+  irq.c
   irq.s
 
   mapper.c
