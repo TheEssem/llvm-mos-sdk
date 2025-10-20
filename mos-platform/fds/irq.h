@@ -1,9 +1,17 @@
+#include <stdbool.h>
+
 #ifndef _BIOS_H_
 #define _BIOS_H_
 
 #ifdef __cplusplus
 extern "C" {
 #endif
+
+// Set the reload value for the timer IRQ.
+void set_timer_irq_reload(unsigned value);
+
+// Set the control bits for the timer IRQ.
+void set_timer_irq_ctrl(bool enabled, bool repeat);
 
 #define NMI_ACTION_VINTWAIT 0b00000000
 #define NMI_ACTION_USER 0b01000000

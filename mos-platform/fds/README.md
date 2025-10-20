@@ -1,12 +1,12 @@
 # FDS target progress
 
-- [ ] Mapper functions
+- [x] Mapper functions
   - [x] Audio (registers exposed, no wrapper functions)
   - [x] Disk I/O
     - [x] Read (registers exposed, no wrapper functions)
     - [x] Write
   - [x] External connector
-  - [ ] IRQs
+  - [x] IRQs
   - [x] Mirroring
 - [ ] BIOS functions
   - [x] LoadFiles
