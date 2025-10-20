@@ -47,6 +47,7 @@ add_platform_library(fds-c
   fds_ReadDownExpPads.c
   fds_ReadDownPads.c
   fds_ReadDownVerifyPads.c
+  fds_ReadKeyboard.s
   fds_ReadOrDownPads.c
   fds_ReadOrDownVerifyPads.c
   fds_SetFileCount.s
