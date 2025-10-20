@@ -54,6 +54,6 @@
   - [x] MemFill
   - [ ] SetScroll
   - [ ] JumpEngine
-  - [ ] ReadKeyboard
+  - [x] ReadKeyboard
   - [ ] LoadTileset (direct pointer)
   - [x] UploadObject
