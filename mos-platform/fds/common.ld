@@ -17,9 +17,6 @@ MEMORY {
 
   /* CPU address space. */
   ram : ORIGIN = 0x0200, LENGTH = 0x0600
-
-  /* NMI, RESET, and vectors. */
-  vectors : ORIGIN = 0xdff6, LENGTH = 10
 }
 
 SECTIONS {
@@ -53,5 +50,5 @@ SECTIONS {
 
   .ram (NOLOAD) : { *(.ram .ram.*) } > ram
 
-  .vectors : { KEEP(*(.vectors)) } >vectors
+  .vectors (COPY) : { KEEP(*(.vectors)) }
 }
