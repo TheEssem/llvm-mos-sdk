@@ -66,7 +66,6 @@ add_platform_library(fds-c
   irq.s
 
   mapper.c
-  mapper.s
 )
 #target_include_directories(fds-c PRIVATE ../nes)
 target_include_directories(fds-c BEFORE PUBLIC .)

@@ -22,18 +22,37 @@ __default_irq:
 	pla
 	rti
 
-.section .nmi_2_begin,"axG",@progbits,nmi_2
-.weak nmi_2
-.global __default_nmi_2
-nmi_2:
-__default_nmi_2:
+.section .nmi_user_1_begin,"axG",@progbits,nmi_user_1
+.weak nmi_user_1
+.global __default_nmi_user_1
+nmi_user_1:
+__default_nmi_user_1:
+		pha
+		txa
+		pha
+		tya
+		pha
+
+.section .nmi_user_1_end,"axG",@progbits,nmi_user_1
+		pla
+		tay
+		pla
+		tax
+		pla
+		rti
+
+.section .nmi_user_2_begin,"axG",@progbits,nmi_user_2
+.weak nmi_user_2
+.global __default_nmi_user_2
+nmi_user_2:
+__default_nmi_user_2:
 	pha
 	txa
 	pha
 	tya
 	pha
 
-.section .nmi_2_end,"axG",@progbits,nmi_2
+.section .nmi_user_2_end,"axG",@progbits,nmi_user_2
 	pla
 	tay
 	pla
@@ -41,18 +60,18 @@ __default_nmi_2:
 	pla
 	rti
 
-.section .nmi_3_begin,"axG",@progbits,nmi_3
-.weak nmi_3
-.global __default_nmi_3
-nmi_3:
-__default_nmi_3:
+.section .nmi_user_3_begin,"axG",@progbits,nmi_user_3
+.weak nmi_user_3
+.global __default_nmi_user_3
+nmi_user_3:
+__default_nmi_user_3:
 	pha
 	txa
 	pha
 	tya
 	pha
 
-.section .nmi_3_end,"axG",@progbits,nmi_3
+.section .nmi_user_3_end,"axG",@progbits,nmi_user_3
 	pla
 	tay
 	pla
