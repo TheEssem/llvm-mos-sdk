@@ -5,7 +5,7 @@
 extern "C" {
 #endif
 
-struct fds_disk_id {
+struct fds_bios_disk_id {
   unsigned char licensee;
   char name[4];
   char version;
@@ -16,7 +16,7 @@ struct fds_disk_id {
   char num_files;
 };
 
-struct fds_file_header {
+struct fds_bios_file_header {
   char id;
   char name[8];
   char *dest;
@@ -32,7 +32,7 @@ struct fds_file_header {
 #define FDS_XFR_INC_1 0
 #define FDS_XFR_INC_32 1
 
-struct fds_vram_transfer {
+struct fds_bios_vram_transfer {
   unsigned int address;
   unsigned int length : 6;
   unsigned int mode : 1;
@@ -43,7 +43,7 @@ struct fds_vram_transfer {
 #define FDS_OBJ_SKIP 0x01
 #define FDS_OBJ_HIDE 0x80
 
-struct fds_object {
+struct fds_bios_object {
   unsigned char render_flag;
   unsigned char y;
   unsigned char y_fractional;
@@ -64,32 +64,32 @@ struct fds_object {
   unsigned char oam_idx;
 };
 
-struct fds_pads {
+struct fds_bios_pads {
   unsigned char pad[2];
   unsigned char exp[2];
 };
 
-struct fds_pads_combined {
+struct fds_bios_pads_combined {
   unsigned char pad_1;
   unsigned char pad_2;
 };
 
-struct fds_trans_pads {
+struct fds_bios_trans_pads {
   unsigned char trans[2];
   unsigned char data[2];
 };
 
-struct fds_trans_exp_pads {
+struct fds_bios_trans_exp_pads {
   unsigned char trans[4];
   unsigned char data[4];
 };
 
-struct fds_coords {
+struct fds_bios_coords {
   unsigned char y;
   unsigned char x;
 };
 
-struct keyboard_data {
+struct fds_bios_keyboard_data {
   char clr_home : 1;
   char up : 1;
   char right : 1;
@@ -172,54 +172,109 @@ struct keyboard_data {
   char stop : 1;
 };
 
-char fds_LoadFiles (struct fds_disk_id *disk_id, char *file_ids, char *loaded) __attribute__((leaf));
-char fds_AppendFile (struct fds_disk_id *disk_id, struct fds_file_header *file_header) __attribute__((leaf));
-char fds_WriteFile (struct fds_disk_id *disk_id, struct fds_file_header *file_header, char file_num) __attribute__((leaf));
-char fds_CheckFileCount (struct fds_disk_id *disk_id, char count) __attribute__((leaf));
-char fds_AdjustFileCount (struct fds_disk_id *disk_id, char count) __attribute__((leaf));
-char fds_SetFileCount1 (struct fds_disk_id *disk_id, char count) __attribute__((leaf));
-char fds_SetFileCount (struct fds_disk_id *disk_id, char count) __attribute__((leaf));
-char fds_GetDiskInfo (struct fds_disk_id *disk_id) __attribute__((leaf));
+// Load files from disk.
+__attribute__((leaf)) char fds_bios_LoadFiles(struct fds_bios_disk_id *disk_id,
+                                              char *file_ids, char *loaded);
+// Append a file to disk.
+__attribute__((leaf)) char
+fds_bios_AppendFile(struct fds_bios_disk_id *disk_id,
+                    struct fds_bios_file_header *file_header);
+// Write a file to disk.
+__attribute__((leaf)) char
+fds_bios_WriteFile(struct fds_bios_disk_id *disk_id,
+                   struct fds_bios_file_header *file_header, char file_num);
+// Compare and set the file count on disk.
+__attribute__((leaf)) char
+fds_bios_CheckFileCount(struct fds_bios_disk_id *disk_id, char count);
+// Decrement the file count on disk.
+__attribute__((leaf)) char
+fds_bios_AdjustFileCount(struct fds_bios_disk_id *disk_id, char count);
+// Set the file count + 1.
+__attribute__((leaf)) char
+fds_bios_SetFileCount1(struct fds_bios_disk_id *disk_id, char count);
+// Set the file count.
+__attribute__((leaf)) char
+fds_bios_SetFileCount(struct fds_bios_disk_id *disk_id, char count);
+// Get the ID info of the current disk.
+__attribute__((leaf)) char
+fds_bios_GetDiskInfo(struct fds_bios_disk_id *disk_id);
 
-char fds_CheckDiskHeader (char string[10]);
-unsigned char fds_GetNumFiles (void);
-void fds_SetNumFiles (unsigned char num);
-char fds_FileMatchTest (char *ids);
-void fds_SkipFiles (unsigned char num);
+// Compares the current disk header to the input string.
+char fds_bios_CheckDiskHeader(char string[10]);
+// Gets the listed amount of files from disk.
+unsigned char fds_bios_GetNumFiles(void);
+// Set the listed amount of files on disk.
+void fds_bios_SetNumFiles(unsigned char num);
+// todo
+char fds_bios_FileMatchTest(char *ids);
+// Skip loading the given amount of files.
+void fds_bios_SkipFiles(unsigned char num);
 
-void fds_Delay131 (void);
-void fds_Delayms (char delay) __attribute__((leaf));
+// Delay by (at least) 131 CPU cycles.
+void fds_bios_Delay131(void);
+// Delay by (approximately) the given value in milliseconds.
+__attribute__((leaf)) void fds_bios_Delayms(char delay);
 
-void fds_DisPFObj (void);
-void fds_EnPFObj (void);
-void fds_DisObj (void);
-void fds_EnObj (void);
-void fds_DisPF (void);
-void fds_EnPF (void);
+// Disable sprite/background rendering.
+void fds_bios_DisPFObj(void);
+// Enable sprite/background rendering.
+void fds_bios_EnPFObj(void);
+// Disable sprite rendering.
+void fds_bios_DisObj(void);
+// Enable sprite rendering.
+void fds_bios_EnObj(void);
+// Disable background rendering.
+void fds_bios_DisPF(void);
+// Enable background rendering.
+void fds_bios_EnPF(void);
 
-void fds_VINTWait (void);
+// Wait until next vblank NMI.
+void fds_bios_VINTWait(void);
 
-void *fds_FetchDirectPtr (void);
+// todo
+void *fds_bios_FetchDirectPtr(void);
 
-unsigned fds_Pixel2NamConv (struct fds_coords coords);
-struct fds_coords fds_Nam2PixelConv (unsigned addr);
+// Convert pixel coordinates to a nametable address.
+unsigned fds_bios_Pixel2NamConv(struct fds_bios_coords coords);
+// Convert a nametable address to pixel coordinates.
+struct fds_bios_coords fds_bios_Nam2PixelConv(unsigned addr);
 
-void fds_SpriteDMA (void);
+// Perform sprite DMA. Should be used after `fds_bios_UploadObject`.
+void fds_bios_SpriteDMA(void);
 
-struct fds_pads fds_ReadPads(void);
-struct fds_pads_combined fds_OrPads(struct fds_pads pads);
-struct fds_trans_pads *fds_ReadDownPads(void);
-struct fds_trans_pads *fds_ReadOrDownPads(void);
-struct fds_trans_pads *fds_ReadDownVerifyPads(void);
-struct fds_trans_pads *fds_ReadOrDownVerifyPads(void);
-struct fds_trans_exp_pads *fds_ReadDownExpPads(void);
+// Read hardwired and expansion joypads.
+struct fds_bios_pads fds_bios_ReadPads(void);
+// Combines inputs from hardwired and expansion joypads.
+// Use after `fds_bios_ReadPads`.
+struct fds_bios_pads_combined fds_bios_OrPads(struct fds_bios_pads pads);
+// Read up/down button transitions on hardwired joypads.
+struct fds_bios_trans_pads *fds_bios_ReadDownPads(void);
+// Read up/down button transitions on hardwired and expansion joypads.
+struct fds_bios_trans_pads *fds_bios_ReadOrDownPads(void);
+// Read up/down button transitions on hardwired joypads until two reads match.
+struct fds_bios_trans_pads *fds_bios_ReadDownVerifyPads(void);
+// Read up/down button transitions on hardwired and expansion joypads until two
+// reads match.
+struct fds_bios_trans_pads *fds_bios_ReadOrDownVerifyPads(void);
+// Read up/down button transitions on hardwired and expansion joypads
+// separately.
+struct fds_bios_trans_exp_pads *fds_bios_ReadDownExpPads(void);
 
-void fds_VRAMFill (char tile_row, char value, char rows_attr) __attribute__((leaf));
-void fds_MemFill (char value, char start, char end) __attribute__((leaf));
+// If tile_row > 0x20, fills pattern table with value for 16 * rows_attr tiles.
+// If tile_row > = 0x20, fills corresponding nametable with value and attribute
+// table with rows_attr.
+__attribute__((leaf)) void fds_bios_VRAMFill(char tile_row, char value,
+                                             char rows_attr);
+// Fill a section of RAM with a value.
+__attribute__((leaf)) void fds_bios_MemFill(char value, char start, char end);
 
-char fds_ReadKeyboard(struct keyboard_data *data) __attribute__((leaf));
+// Reads from the Family BASIC Keyboard. Returns 0x00 if not connected, 0xFF if
+// no errors.
+__attribute__((leaf)) char
+fds_bios_ReadKeyboard(struct fds_bios_keyboard_data *data);
 
-void fds_UploadObject (struct fds_object *obj);
+// Uploads an object to be used with `fds_bios_SpriteDMA`.
+void fds_bios_UploadObject(struct fds_bios_object *obj);
 
 #ifdef __cplusplus
 }

@@ -1,3 +1,0 @@
-extern void __SET_NUM_FILES(unsigned char num) __attribute__((leaf));
-
-void fds_SetNumFiles(unsigned char num) { __SET_NUM_FILES(num); }
