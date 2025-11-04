@@ -7,14 +7,13 @@
 fds_bios_ReadKeyboard:
   jsr __READ_KEYBOARD
   pha
-  ldx #0
-  ldy #0
+  ldx #8
+  ldy #8
 1:
   lda $0,x
   sta (__rc2),y
-  inx
-  iny
-  cpx #9
-  bne 1b
+  dex
+  dey
+  bpl 1b
   pla
   rts
