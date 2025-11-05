@@ -231,9 +231,6 @@ void fds_bios_EnPF(void);
 // Wait until next vblank NMI.
 void fds_bios_VINTWait(void);
 
-// todo
-void *fds_bios_FetchDirectPtr(void);
-
 // Convert pixel coordinates to a nametable address.
 unsigned fds_bios_Pixel2NamConv(struct fds_bios_coords coords);
 // Convert a nametable address to pixel coordinates.

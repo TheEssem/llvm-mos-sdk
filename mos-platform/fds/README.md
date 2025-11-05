@@ -32,7 +32,7 @@
   - [x] EnPF
   - [x] VINTWait
   - [ ] VRAMStructWrite (direct pointer)
-  - [x] FetchDirectPtr
+  - [ ] ~~FetchDirectPtr~~ (not useful in C)
   - [ ] WriteVRAMBuffer
   - [ ] ReadVRAMBuffer
   - [ ] PrepareVRAMString (direct pointer)
